@@ -1,17 +1,17 @@
 pipeline {
   agent { docker { image 'python:3.7.2' } }
   stages {
-    stage('build') {
+    stage('Build') {
       steps {
         sh 'pip install -r requirements.txt'
       }
     }
-    stage('test') {
+    stage('Test') {
       steps {
-        sh 'pytest'
+        sh 'pytest test_api.py'
       }
     }
-    stage("deploy") {
+    stage("Deploy") {
         steps {
             sh "OKK"
         }
