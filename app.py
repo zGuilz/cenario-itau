@@ -16,3 +16,5 @@ def hello_world():
     return Teste.teste(nome)
 
 
+if __name__ == "__main__":
+    app.run()
