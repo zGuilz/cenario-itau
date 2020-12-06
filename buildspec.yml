@@ -6,25 +6,13 @@ phases:
       python: 3.8
   pre_build:
     commands:
-      - python3.6 -m virtualenv venv
-      - . venv/bin/activate
-      - pip install --upgrade pip
-      - pip install .
+      - python --version
       - pip install -r requirements.txt
       - rm -rf dspt
       - mkdir test-reports
   build:
     commands:
       - pytest
-        --html=test-reports/report.html
-        --self-contained-html
-        -s
-        -v
-        --cov=dspt
-        --cov-report=html:test-reports/coverage
-        --junitxml=test-reports/junit.xml
-        --log-file=test-reports/logs.txt
-        tests
   post_build:
     commands:
       - echo Build completed on `date`
