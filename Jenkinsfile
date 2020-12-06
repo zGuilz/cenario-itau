@@ -10,11 +10,11 @@ pipeline {
       steps {
         sh 'pytest'
       }
+    }
     stage("deploy") {
         steps {
             sh "OK"
         }
     }    
-    }
   }
 }
