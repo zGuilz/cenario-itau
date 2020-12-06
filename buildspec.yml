@@ -6,26 +6,16 @@ phases:
       python: 3.8
   pre_build:
     commands:
-      - apt-get install -y python3-venv
-      - python3.6 -m venv test_venv
-      - . test_venv/bin/activate
-      - pip install --upgrade pip
-      - pip install .
-      - pip install -r tests/requirements.txt
+      - python --version
+      - pip install -r requirements.txt
       - rm -rf dspt
       - mkdir test-reports
   build:
     commands:
       - pytest
-        --html=test-reports/report.html
-        --self-contained-html
-        -s
-        -v
-        --cov=dspt
-        --cov-report=html:test-reports/coverage
-        --junitxml=test-reports/junit.xml
-        --log-file=test-reports/logs.txt
-        tests
   post_build:
     commands:
-      - echo Build completed on `date`
+      - printf '[{"name":"your.task.definition.name","imageUri":"%s"}]' $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG > imagedefinitions.json
+
+artifacts:
+    files: imagedefinitions.json
