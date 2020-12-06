@@ -12,7 +12,7 @@ pipeline {
       }
     stage("deploy") {
         steps {
-            sh "OK"
+            sh "OKK"
         }
     }    
     }
