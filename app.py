@@ -5,7 +5,7 @@ class Teste:
     def teste(nome):
         if nome == "API":
             return "OK"
-        return "TESTADO !"
+        return "TESTADO PIPELINE!"
 
 
 app = Flask(__name__)
